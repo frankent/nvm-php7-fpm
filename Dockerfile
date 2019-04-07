@@ -30,7 +30,8 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
 
 RUN cd /tmp \
     && wget https://getcomposer.org/download/$COMPOSER_VERSION/composer.phar \
-    && mv composer.phar /usr/local/bin/composer
+    && mv composer.phar /usr/local/bin/composer \
+    && chmod +x /usr/local/bin/composer
 
 # Install nvm with node and npm
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v$NVM_VERSION/install.sh | bash \
