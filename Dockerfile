@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         wget \
         zip \
         unzip \
+        cron \
     && rm -rf /var/lib/apt/lists/*
 
 RUN cd /tmp \
