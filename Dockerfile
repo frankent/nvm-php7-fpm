@@ -1,8 +1,10 @@
 FROM php:7-fpm
 
 ENV NVM_VERSION 0.34.0
-ENV NVM_DIR $HOME/.nvm
 ENV NODE_VERSION 10.15.1
+ENV COMPOSER_VERSION 1.8.4
+
+ENV NVM_DIR $HOME/.nvm
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
@@ -25,6 +27,10 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         libpng-dev \
         wget \
     && rm -rf /var/lib/apt/lists/*
+
+RUN cd /tmp \
+    && wget https://getcomposer.org/download/$COMPOSER_VERSION/composer.phar \
+    && mv composer.phar /usr/local/bin/composer
 
 # Install nvm with node and npm
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v$NVM_VERSION/install.sh | bash \
