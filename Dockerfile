@@ -1,12 +1,12 @@
 FROM php:7-fpm
 
-ENV NVM_VERSION 0.34.0
-ENV NODE_VERSION 10.15.1
-ENV COMPOSER_VERSION 1.8.4
+ENV NVM_VERSION         0.34.0
+ENV NODE_VERSION        10.15.1
+ENV COMPOSER_VERSION    1.8.4
 
-ENV NVM_DIR /usr/local/nvm
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
+ENV NVM_DIR     /usr/local/nvm
+ENV NODE_PATH   $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH        $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 # Replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
