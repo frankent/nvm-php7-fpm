@@ -18,23 +18,24 @@ RUN mkdir $NVM_DIR
 
 # Install base dependencies
 RUN apt-get update && apt-get install -y -q --no-install-recommends \
-        apt-transport-https \
-        build-essential \
-        ca-certificates \
-        curl \
-        git \
-        libssl-dev \
-        libpng-dev \
-        wget \
-        zip \
-        unzip \
-        cron \
+    apt-transport-https \
+    build-essential \
+    ca-certificates \
+    curl \
+    git \
+    libssl-dev \
+    libpng-dev \
+    wget \
+    zip \
+    unzip \
+    cron \
     && rm -rf /var/lib/apt/lists/*
 
 RUN cd /tmp \
     && wget https://getcomposer.org/download/$COMPOSER_VERSION/composer.phar \
     && mv composer.phar /usr/local/bin/composer \
-    && chmod +x /usr/local/bin/composer
+    && chmod +x /usr/local/bin/composer \
+    && composer global require hirak/prestissimo
 
 # Install nvm with node and npm
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v$NVM_VERSION/install.sh | bash \
